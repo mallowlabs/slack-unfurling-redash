@@ -1,0 +1,74 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+    slack-unfurling-redash
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+    Function:
+        Timeout: 90
+
+Parameters:
+    BucketName:
+        Type: String
+        Default: your-bucket
+    RedashApiKey:
+        Type: String
+        Default: your-api-key
+    SlackOauthToken:
+        Type: String
+        Default: your-slack-oauth-token
+
+Resources:
+
+    RedashBucket:
+        Type: AWS::S3::Bucket
+        Properties:
+            BucketName: !Ref BucketName
+
+    RedashBucketPolicy:
+        Type: AWS::S3::BucketPolicy
+        Properties:
+            Bucket: !Ref RedashBucket
+            PolicyDocument:
+                Statement:
+                    - Action: s3:GetObject
+                      Effect: Allow
+                      Resource: !Sub 'arn:aws:s3:::${BucketName}/*'
+                      Principal: '*'
+
+    SlackUnfrulingRedashFunction:
+        Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+        Properties:
+            CodeUri: slack-unfurling-redash/
+            Handler: app.lambdaHandler
+            Runtime: nodejs8.10
+            Policies:
+                - S3CrudPolicy:
+                    BucketName: !Ref BucketName
+            Environment:
+                Variables:
+                    BUCKET_NAME: !Ref BucketName
+                    REDASH_API_KEY: !Ref RedashApiKey
+                    SLACK_OAUTH_TOKEN: !Ref SlackOauthToken
+            MemorySize: 1024
+            Events:
+                SlackUnfrulingRedash:
+                    Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+                    Properties:
+                        Path: /call
+                        Method: post
+
+Outputs:
+
+    SlackUnfrulingRedashApi:
+      Description: "API Gateway endpoint URL for Prod stage for Slack Unfurling Redash function"
+      Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/call/"
+
+    SlackUnfrulingRedashFunction:
+      Description: "Slack Unfurling Redash Lambda Function ARN"
+      Value: !GetAtt SlackUnfrulingRedashFunction.Arn
+
+    SlackUnfrulingRedashFunctionIamRole:
+      Description: "Implicit IAM Role created for Slack Unfurling Redash function"
+      Value: !GetAtt SlackUnfrulingRedashFunctionRole.Arn
