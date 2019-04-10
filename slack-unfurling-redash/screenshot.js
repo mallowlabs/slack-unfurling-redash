@@ -7,6 +7,7 @@ module.exports.screenshot = async function (url, bucketName) {
     let browser = null;
 
     try {
+        await chromium.font('https://raw.githack.com/googlei18n/noto-cjk/master/NotoSansCJKjp-Regular.otf');
         browser = await puppeteer.launch({
             args: chromium.args,
             defaultViewport: chromium.defaultViewport,
