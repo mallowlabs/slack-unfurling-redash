@@ -8,7 +8,7 @@
   "license": "MIT",
   "dependencies": {
     "@slack/client": "^5.0.0",
-    "chrome-aws-lambda": "^1.14.0",
+    "chrome-aws-lambda": "^2.0.1",
     "puppeteer-core": "^1.14.0",
     "randomstring": "^1.1.5"
   },
