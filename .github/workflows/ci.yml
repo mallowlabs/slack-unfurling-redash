@@ -1,6 +1,6 @@
 name: CI
-on:
-  pull_request:
+
+on: [push]
 
 jobs:
   build:
@@ -11,6 +11,8 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version-file: 'slack-unfurling-redash/.node-version'
+        cache: 'npm'
+        cache-dependency-path: 'slack-unfurling-redash/package-lock.json'
     - name: Run tests
       run: |
         npm ci
