@@ -1,9 +1,9 @@
 {
-  "name": "hello_world",
+  "name": "slack-unfurling-redash",
   "version": "1.0.0",
-  "description": "hello world sample for NodeJS",
+  "description": "A Slack unfruling Lambda function for Redash (self hosting)",
   "main": "src/index.js",
-  "repository": "https://github.com/awslabs/aws-sam-cli/tree/develop/samcli/local/init/templates/cookiecutter-aws-sam-hello-nodejs",
+  "repository": "https://github.com/mallowlabs/slack-unfurling-redash",
   "author": "SAM CLI",
   "license": "MIT",
   "dependencies": {
