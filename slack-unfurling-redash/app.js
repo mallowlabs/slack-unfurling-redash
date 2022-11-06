@@ -56,7 +56,7 @@ exports.lambdaHandler = async (event, context) => {
             const links = params.event.links;
 
             const unfurls = {};
-            for(link of links) {
+            for(const link of links) {
                 const emebedUrl = parseRedashUrl(link.url, process.env.REDASH_API_KEY);
                 if (emebedUrl !== null) {
                     const screenshotUrl = await screenshot(emebedUrl, process.env.BUCKET_NAME);
