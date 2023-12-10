@@ -6,3 +6,10 @@ updates:
       interval: "weekly"
       timezone: "Asia/Tokyo"
       day: "friday"
+
+  - package-ecosystem: "npm"
+    directory: "/slack-unfurling-redash/"
+    schedule:
+      interval: "weekly"
+      timezone: "Asia/Tokyo"
+      day: "friday"
