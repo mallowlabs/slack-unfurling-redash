@@ -1,5 +1,5 @@
 const {screenshot} = require('./screenshot');
-const { WebClient } = require('@slack/client');
+const { WebClient } = require('@slack/web-api');
 
 /**
  *
