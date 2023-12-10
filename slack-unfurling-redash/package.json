@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "aws-sdk": "^2.1354.0",
-    "chai": "^4.1.2",
+    "chai": "^4.3.10",
     "mocha": "^10.1.0"
   }
 }
