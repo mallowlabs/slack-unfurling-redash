@@ -16,7 +16,7 @@
     "test": "mocha tests/unit/"
   },
   "devDependencies": {
-    "aws-sdk": "^2.1515.0",
+    "aws-sdk": "^2.1518.0",
     "chai": "^4.3.10",
     "mocha": "^10.2.0"
   }
