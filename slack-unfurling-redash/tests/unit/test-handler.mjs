@@ -1,8 +1,7 @@
 'use strict';
 
-const app = require('../../app.js');
-const chai = require('chai');
-const expect = chai.expect;
+import app from '../../app.js';
+import { expect } from 'chai';
 
 describe('Tests handler', function () {
     it('verifies url_verification response', async () => {
