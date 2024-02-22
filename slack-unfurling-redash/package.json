@@ -8,7 +8,7 @@
   "license": "MIT",
   "dependencies": {
     "@slack/web-api": "^7.0.2",
-    "@sparticuz/chromium": "^121.0.0",
+    "@sparticuz/chromium": "^122.0.0",
     "puppeteer-core": "^22.0.0",
     "randomstring": "^1.3.0"
   },
