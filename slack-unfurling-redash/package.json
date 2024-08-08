@@ -9,7 +9,7 @@
   "dependencies": {
     "@slack/web-api": "^7.3.2",
     "@sparticuz/chromium": "^126.0.0",
-    "puppeteer-core": "^22.15.0",
+    "puppeteer-core": "^23.0.2",
     "randomstring": "^1.3.0"
   },
   "scripts": {
