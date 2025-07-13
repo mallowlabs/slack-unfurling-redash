@@ -42,7 +42,7 @@ Resources:
         Properties:
             CodeUri: slack-unfurling-redash/
             Handler: app.lambdaHandler
-            Runtime: nodejs20.x
+            Runtime: nodejs22.x
             Policies:
                 - S3CrudPolicy:
                     BucketName: !Ref BucketName
