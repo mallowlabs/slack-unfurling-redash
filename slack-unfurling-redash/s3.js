@@ -1,8 +1,8 @@
-const AWS = require('aws-sdk');
+const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
 const randomstring = require('randomstring');
 
 module.exports.upload = async function (data, bucketName) {
-  const bucket = new AWS.S3({params: {Bucket: bucketName}});
+  const s3 = new S3Client({});
   const key = randomstring.generate(6) + '/' + randomstring.generate() + '.png';
 
   const params = {
@@ -13,6 +13,6 @@ module.exports.upload = async function (data, bucketName) {
     Body: data,
   };
 
-  const response = await bucket.upload(params).promise();
-  return response.Location;
+  await s3.send(new PutObjectCommand(params));
+  return `https://${bucketName}.s3.amazonaws.com/${key}`;
 }
