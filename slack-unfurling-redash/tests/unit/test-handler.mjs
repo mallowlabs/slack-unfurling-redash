@@ -1,7 +1,8 @@
 'use strict';
 
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
 import app from '../../app.js';
-import { expect } from 'chai';
 
 describe('Tests handler', function () {
     it('verifies url_verification response', async () => {
@@ -14,13 +15,13 @@ describe('Tests handler', function () {
 
         const result = await app.lambdaHandler(event, context);
 
-        expect(result).to.be.an('object');
-        expect(result.statusCode).to.equal(200);
-        expect(result.body).to.be.an('string');
+        assert.ok(typeof result === 'object');
+        assert.strictEqual(result.statusCode, 200);
+        assert.ok(typeof result.body === 'string');
 
         const response = JSON.parse(result.body);
 
-        expect(response).to.be.an('object');
-        expect(response.challenge).to.be.equal('abc');
+        assert.ok(typeof response === 'object');
+        assert.strictEqual(response.challenge, 'abc');
     });
 });
