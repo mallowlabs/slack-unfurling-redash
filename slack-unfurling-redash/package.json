@@ -7,7 +7,7 @@
   "author": "SAM CLI",
   "license": "MIT",
   "dependencies": {
-    "@slack/web-api": "^7.9.3",
+    "@slack/web-api": "^7.10.0",
     "@sparticuz/chromium": "^138.0.2",
     "@aws-sdk/client-s3": "^3.878.0",
     "puppeteer-core": "^24.17.1",
