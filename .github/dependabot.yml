@@ -6,6 +6,8 @@ updates:
       interval: "weekly"
       timezone: "Asia/Tokyo"
       day: "friday"
+    cooldown:
+      default-days: 1
 
   - package-ecosystem: "npm"
     directory: "/slack-unfurling-redash/"
@@ -13,3 +15,5 @@ updates:
       interval: "weekly"
       timezone: "Asia/Tokyo"
       day: "friday"
+    cooldown:
+      default-days: 1
